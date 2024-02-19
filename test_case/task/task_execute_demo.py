@@ -1,11 +1,10 @@
 import os
 import time
 import unittest
-
+import random
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common import keys
-
 from common.comapi import Common
 from public.time_login import time_login
 from selenium.webdriver.common.by import By
@@ -37,27 +36,38 @@ class testShouye(unittest.TestCase):
         input_element = self.driver.find_element(By.XPATH, '/html/body/div[38]/div[2]/div/div/div[1]')
         # 定位到任务名称，输入任务名称
         self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").send_keys("自动化测试任务")
+        # 生成随机数
+        random_number = random.randint(1, 100)
+
+        # 使用f-string将随机数转换为字符串并附加到文本后面
+        input_text = f"自动化测试任务{random_number}"
+
+        # 找到输入框并发送文本
+        self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").send_keys(input_text)
         # 关闭继续新建
-        # self.driver.find_element(By.XPATH,
-        #                          '//input[@type="hidden" and @value="true"]').click()
+        self.driver.find_element(By.ID, 'task-continue-btn').click()
         time.sleep(2)
         self.driver.find_element(By.CSS_SELECTOR, ".fixed6 .ivu-input").click()
 
         time.sleep(2)
+        # 选择人员，此时选择的是admin
         self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
-        print(1)
         # element = self.driver.find_element(By.XPATH, '//button[@class="ivu-btn ivu-btn-primary"]/span[text()="确定"]')
         # self.driver.execute_script("arguments[0].click();", element)
-        self.driver.find_element(By.XPATH, '/html/body/div[60]/div[2]/div/div/div[3]/div/div/button[2]').click()
+        # self.driver.find_elements(By.ID, 'task-user-btn').click()
+        elements = self.driver.find_elements(By.ID, 'task-user-btn')
+        if len(elements) >= 4:
+            # 点击第四个匹配的元素（索引从0开始）
+            elements[3].click()  # 索引1代表第二个元素
+        else:
+            print("没有足够的匹配元素来点击第四个。")
         # self.driver.find_element(By.CSS_SELECTOR, '.fixed6 .ivu-input').click()
-        print(3)
         self.driver.execute_script("window.scrollTo(0,0)")
         # 发布任务
-        self.driver.find_element(By.XPATH,
-                                 "/html/body/div[48]/div[2]/div/div/div[3]/div/div/button[3]/span").click()
+        self.driver.find_element(By.ID, 'task-new-btn').click()
+        time.sleep(2)
         # self.driver.find_element(By.XPATH, '/html/body/div[22]/div[2]/div/div/div[3]/div/div/button[3]').click()
-        # print("success")
+        print("success")
         self.driver.quit()
 
 # 打开首页
