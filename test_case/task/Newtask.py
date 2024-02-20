@@ -63,11 +63,25 @@ class testShouye(unittest.TestCase):
             print("没有足够的匹配元素来点击第四个。")
         # self.driver.find_element(By.CSS_SELECTOR, '.fixed6 .ivu-input').click()
         self.driver.execute_script("window.scrollTo(0,0)")
+        # 选择标签
+        a = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-default')
+        a[10].click()  # 索引10代表第十一个元素
+
+        b = self.driver.find_elements(By.CSS_SELECTOR, 'span.ivu-tag-text.ivu-tag-color-default')
+        b[10].click()
+        #点击标签弹窗中的确认
+        c = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
+        c[29].click()
         # 发布任务
         self.driver.find_element(By.ID, 'task-new-btn').click()
         time.sleep(2)
+
+        # 获取当前页面的URL
+        current_url = self.driver.current_url
+        # 打印当前页面的URL
+        print("当前页面的URL是:", current_url)
         # self.driver.find_element(By.XPATH, '/html/body/div[22]/div[2]/div/div/div[3]/div/div/button[3]').click()
-        print("success")
+        print("任务新建成功")
         self.driver.quit()
 
 # 打开首页

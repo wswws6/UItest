@@ -32,12 +32,13 @@ class testShouye(unittest.TestCase):
         self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys("WOrkeasy2019.")
         self.driver.find_element("xpath", "//button").click()
         self.driver.find_element("xpath", '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[1]/div[1]/span').click()
-        element = self.driver.find_element(By.CLASS_NAME, "ivu-select-selected-value")
-
-        # 现在你可以对element执行各种操作，比如点击、获取文本等
-        # 例如，打印元素的文本内容
-        print(element.text)
+        # 选择项目分类
+        # self.driver.find_element("By.CSS_SELECTOR", 'body > div:nth-child(24) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > div > form > div:nth-child(3) > div > div > div.ivu-select-selection > div > span').click()
+        # 选择负责人
         time.sleep(2)
+        self.driver.find_element("xpath", "/html/body/div[55]/div[2]/div/div/div[2]/div/form/div[8]/form/div/div/div/input").click()
+        self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
+
 
 
 # 打开首页
