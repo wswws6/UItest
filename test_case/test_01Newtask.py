@@ -13,15 +13,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-
-
-
 class testShouye(unittest.TestCase):
     @classmethod
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()
         self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
-        # self.driver.maximize_window()
+        self.driver.maximize_window()
 
         # self.driver.set_window_size(1724, 1055)
         self.driver.find_element("xpath", "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
@@ -48,13 +45,9 @@ class testShouye(unittest.TestCase):
         self.driver.find_element(By.ID, 'task-continue-btn').click()
         time.sleep(2)
         self.driver.find_element(By.CSS_SELECTOR, ".fixed6 .ivu-input").click()
-
         time.sleep(2)
         # 选择人员，此时选择的是admin
         self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
-        # element = self.driver.find_element(By.XPATH, '//button[@class="ivu-btn ivu-btn-primary"]/span[text()="确定"]')
-        # self.driver.execute_script("arguments[0].click();", element)
-        # self.driver.find_elements(By.ID, 'task-user-btn').click()
         elements = self.driver.find_elements(By.ID, 'task-user-btn')
         if len(elements) >= 4:
             # 点击第四个匹配的元素（索引从0开始）
@@ -75,14 +68,39 @@ class testShouye(unittest.TestCase):
         # 发布任务
         self.driver.find_element(By.ID, 'task-new-btn').click()
         time.sleep(2)
-
         # 获取当前页面的URL
         current_url = self.driver.current_url
         # 打印当前页面的URL
-        print("当前页面的URL是:", current_url)
+        print("新建任务的URL是:", current_url)
         # self.driver.find_element(By.XPATH, '/html/body/div[22]/div[2]/div/div/div[3]/div/div/button[3]').click()
-        print("任务新建成功")
+        # 点击提交任务
+        self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
+        # 点击提交任务弹窗中的确认
+        d = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
+        d[7].click()
+        self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
+        # 点击首页
+        self.driver.find_element(By.CSS_SELECTOR, '.ivu-tag.ivu-tag-size-default.ivu-tag-default.ivu-tag-checked.router-tag').click()
+        time.sleep(3)
+        # 从首页提醒点击进入任务详情
+        e = self.driver.find_elements(By.CSS_SELECTOR, '.white-nowrap')
+        e[0].click()
+        time.sleep(2)
+        # 从首页提醒点击进入任务详情
+        f = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-default.ivu-btn-small')
+        f[1].click()
+        # 填写评分
+        g = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-input-number-input')
+        g[1].click()
+        g[1].send_keys('8')
+
+        h = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
+        h[16].click()
+        h[16].click()
+        time.sleep(2)
+        print("任务正常完成")
         self.driver.quit()
+
 
 # 打开首页
 def test_home01(self):

@@ -15,8 +15,6 @@ class testShouye(unittest.TestCase):
         self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
         # self.driver.set_window_size(1724, 1055)
         self.driver.find_element("xpath", "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
-        #奇怪，登录页的用户名框，css定位不到，xpath就能；seleiuimIDE用xpath就能定位到
-
         self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input').send_keys("admin87654321")
         self.driver.implicitly_wait(10)
         self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').click()
