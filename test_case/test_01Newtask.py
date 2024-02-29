@@ -13,6 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+
 class testShouye(unittest.TestCase):
     @classmethod
     def testsetUpClass(self):
@@ -21,16 +22,23 @@ class testShouye(unittest.TestCase):
         self.driver.maximize_window()
 
         # self.driver.set_window_size(1724, 1055)
-        self.driver.find_element("xpath", "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
+        self.driver.find_element("xpath",
+                                 "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
 
-        self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input').send_keys("admin87654321")
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input').send_keys(
+            "admin87654321")
         self.driver.implicitly_wait(10)
-        self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').click()
-        self.driver.find_element("xpath", '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys("WOrkeasy2019.")
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').click()
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys(
+            "WOrkeasy2019.")
         self.driver.find_element("xpath", "//button").click()
-        self.driver.find_element("xpath", '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[2]/div[1]/span').click()
-        #定位到模态框
-        input_element = self.driver.find_element(By.XPATH, '/html/body/div[38]/div[2]/div/div/div[1]')
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[2]/div[1]/span').click()
+        # 定位到模态框
+        # input_element = self.driver.find_element(By.XPATH, '/html/body/div[38]/div[2]/div/div/div[1]')
         # 定位到任务名称，输入任务名称
         self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").click()
         # 生成随机数
@@ -62,7 +70,7 @@ class testShouye(unittest.TestCase):
 
         b = self.driver.find_elements(By.CSS_SELECTOR, 'span.ivu-tag-text.ivu-tag-color-default')
         b[10].click()
-        #点击标签弹窗中的确认
+        # 点击标签弹窗中的确认
         c = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
         c[29].click()
         # 发布任务
@@ -74,14 +82,16 @@ class testShouye(unittest.TestCase):
         print("新建任务的URL是:", current_url)
         # self.driver.find_element(By.XPATH, '/html/body/div[22]/div[2]/div/div/div[3]/div/div/button[3]').click()
         # 点击提交任务
-        self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
+        self.driver.find_element(By.CSS_SELECTOR,
+                                 "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
         # 点击提交任务弹窗中的确认
         d = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
         d[7].click()
         # self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
         time.sleep(1)
         # 点击首页
-        self.driver.find_element(By.CSS_SELECTOR, '.ivu-tag.ivu-tag-size-default.ivu-tag-default.ivu-tag-checked.router-tag').click()
+        self.driver.find_element(By.CSS_SELECTOR,
+                                 '.ivu-tag.ivu-tag-size-default.ivu-tag-default.ivu-tag-checked.router-tag').click()
         time.sleep(3)
         # 从首页提醒点击进入任务详情
         e = self.driver.find_elements(By.CSS_SELECTOR, '.white-nowrap')
@@ -110,6 +120,7 @@ class testShouye(unittest.TestCase):
 # 打开首页
 def test_home01(self):
     time_login(self.driver).login()
+
 
 if __name__ == "__main__":
     unittest.main()

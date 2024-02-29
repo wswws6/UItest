@@ -14,11 +14,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import datetime
 
-
+# 104.0.5112.101
 class testShouye(unittest.TestCase):
     @classmethod
     def testsetUpClass(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome()  # Linux/macOS示例路径
+        # self.driver = webdriver.Chrome()
         self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
         # self.driver.maximize_window()
 
@@ -52,10 +53,9 @@ class testShouye(unittest.TestCase):
         # 选择项目代号
         a1 = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-form-item-content > .ivu-input-wrapper-default.ivu-input-type-text > .ivu-input')
         # 填写项目代号
-        a1[2].send_keys("auto"+str(random.randint(1000000000, 9999999999)))
-
+        a1[2].send_keys("auto"+str(random.randint(1, 9999999999)))
         # 填写项目名称
-        a1[3].send_keys("自动化测试项目")
+        a1[3].send_keys("自动化测试项目"+str(random.randint(1, 99999)))
         # 选择负责人
         a1[4].click()
         self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
@@ -83,6 +83,23 @@ class testShouye(unittest.TestCase):
         # 点击跳过导入WBS
         c = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-default')
         c[1].click()
+
+        # 点击挂起
+        d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
+        d[3].click()
+        e = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
+        time.sleep(11111)
+        e[22].click()
+        # 点击重启
+        d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
+
+        d[3].click()
+        e = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
+        print(e)
+        time.sleep(1)
+        e[22].click()
+
+
         time.sleep(10000)
         # 打开首页
 def test_home01(self):
