@@ -78,7 +78,8 @@ class testShouye(unittest.TestCase):
         # 点击提交任务弹窗中的确认
         d = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
         d[7].click()
-        self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
+        # self.driver.find_element(By.CSS_SELECTOR, "button.dcc_c_margin_left.ivu-btn.ivu-btn-primary.ivu-btn-ghost").click()
+        time.sleep(1)
         # 点击首页
         self.driver.find_element(By.CSS_SELECTOR, '.ivu-tag.ivu-tag-size-default.ivu-tag-default.ivu-tag-checked.router-tag').click()
         time.sleep(3)
@@ -86,18 +87,22 @@ class testShouye(unittest.TestCase):
         e = self.driver.find_elements(By.CSS_SELECTOR, '.white-nowrap')
         e[0].click()
         time.sleep(2)
-        # 从首页提醒点击进入任务详情
+        # 点击任务提交
         f = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-default.ivu-btn-small')
+        # f = self.driver.find_elements(By.XPATH, '//button[@class="ivu-btn ivu-btn-primary" and normalize-space()="确定"]')
+
         f[1].click()
         # 填写评分
         g = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-input-number-input')
         g[1].click()
         g[1].send_keys('8')
-
         h = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
         h[16].click()
         h[16].click()
         time.sleep(2)
+        # 截图
+        self.driver.save_screenshot('/Users/wuwenshuai/Downloads/Dwise/report/pic/a.png')
+
         print("任务正常完成")
         self.driver.quit()
 
