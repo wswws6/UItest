@@ -6,47 +6,31 @@ from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common import keys
 from common.comapi import Common
-from public.time_login import time_login
+from public.aiwei_login import aiwei_login
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from public.Retryable import retry_on_failure
 
 
-class testShouye(unittest.TestCase):
+
+class testTask(unittest.TestCase):
     @classmethod
+    @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()
-        self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
-        self.driver.maximize_window()
-
-        # self.driver.set_window_size(1724, 1055)
-        self.driver.find_element("xpath",
-                                 "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
-
-        self.driver.find_element("xpath",
-                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input').send_keys(
-            "admin87654321")
-        self.driver.implicitly_wait(10)
-        self.driver.find_element("xpath",
-                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').click()
-        self.driver.find_element("xpath",
-                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys(
-            "WOrkeasy2019.")
-        self.driver.find_element("xpath", "//button").click()
+        aiwei_login(self.driver).login()
         self.driver.find_element("xpath",
                                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[2]/div[1]/span').click()
-        # 定位到模态框
-        # input_element = self.driver.find_element(By.XPATH, '/html/body/div[38]/div[2]/div/div/div[1]')
         # 定位到任务名称，输入任务名称
         self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").click()
         # 生成随机数
         random_number = random.randint(1, 100)
-
         # 使用f-string将随机数转换为字符串并附加到文本后面
-        input_text = f"自动化测试任务{random_number}"
 
+        input_text = f"自动化测试任务{random_number}"
         # 找到输入框并发送文本
         self.driver.find_element(By.CSS_SELECTOR, ".modal > .ivu-form .ivu-input").send_keys(input_text)
         # 关闭继续新建
@@ -111,9 +95,30 @@ class testShouye(unittest.TestCase):
         h[16].click()
         time.sleep(2)
         # 截图
-        self.driver.save_screenshot('/Users/wuwenshuai/Downloads/Dwise/report/pic/a.png')
+        # self.driver.save_screenshot('/Users/wuwenshuai/Downloads/Dwise/report/pic/a.png')
 
-        print("任务正常完成")
+        # 定位到含有任务详情的span元素
+        # element = WebDriverWait(self.driver, 10).until(
+        #     EC.presence_of_element_located(By.XPATH, "//div[@title='Admin 完成任务']")
+        # )
+        # actual_text = element.text
+        # print(actual_text)
+        #
+        # expected_text = "Admin 完成任务"
+        # assert actual_text == expected_text, f"实际内容为：{actual_text}，与预期不符"
+        # 假设driver是已经初始化好的WebDriver对象
+        # try:
+        #     # 根据class属性定位图标元素
+        #     icon_element = driver.find_element(By.CLASS_NAME, "iconfont icon-check-circle")
+        #
+        #     # 图标元素存在，可以根据需要进行进一步的断言（例如检查其样式、父元素状态等）
+        #     assert icon_element.is_displayed(), "图标元素未显示"
+        #
+        # except NoSuchElementException:
+        #     # 如果找不到图标元素，则断言失败
+        #     assert False, "预期的图标元素不存在"
+
+        time.sleep(2)
         self.driver.quit()
 
 
