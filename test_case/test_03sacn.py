@@ -25,7 +25,7 @@ class testShouye(unittest.TestCase):
 
 # 打开首页
 def test_home01(self):
-    time_login(self.driver).login()
+    aiwei_login(self.driver).login()
 
 if __name__ == "__main__":
     unittest.main()

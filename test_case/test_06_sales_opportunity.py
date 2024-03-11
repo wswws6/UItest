@@ -24,7 +24,7 @@ class sales_opportunity(unittest.TestCase):
     @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()
-        self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
+        # self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
         aiwei_login(self.driver).login()
 
         # 定位到包含“销售机会”的标题元素

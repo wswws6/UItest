@@ -41,7 +41,8 @@ class testproject(unittest.TestCase):
         # 填写项目代号
         a1[2].send_keys("auto"+str(random.randint(1, 9999999999)))
         # 填写项目名称
-        a1[3].send_keys("自动化测试项目"+str(random.randint(1, 99999)))
+        radom = str(random.randint(1, 9999999))
+        a1[3].send_keys("自动化测试项目"+radom)
         # 选择负责人
         a1[4].click()
         self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
@@ -75,13 +76,20 @@ class testproject(unittest.TestCase):
         current_url = self.driver.current_url
         # 打印当前页面的URL
         print("新建项目的URL是:", current_url)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.CLASS_NAME, 'dpt-title'))
+        )
+
+        # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
+        # print("项目详情：自动化测试项目"+ radom )
+        assert "项目详情：自动化测试项目"+ radom in element.text.strip()
         # # 点击挂起
         # d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
         # d[3].click()
         # e = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
         # time.sleep(11111)
         # e[22].click()
-        # # 点击重启
+        # 点击重启
         # d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
         #
         # d[3].click()

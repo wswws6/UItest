@@ -18,7 +18,7 @@ from public.Retryable import retry_on_failure
 
 class testTask(unittest.TestCase):
     @classmethod
-    @retry_on_failure(max_retries=3, delay=1)
+    # @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()
         aiwei_login(self.driver).login()
@@ -96,27 +96,21 @@ class testTask(unittest.TestCase):
         time.sleep(2)
         # 截图
         # self.driver.save_screenshot('/Users/wuwenshuai/Downloads/Dwise/report/pic/a.png')
-
         # 定位到含有任务详情的span元素
-        # element = WebDriverWait(self.driver, 10).until(
-        #     EC.presence_of_element_located(By.XPATH, "//div[@title='Admin 完成任务']")
-        # )
-        # actual_text = element.text
-        # print(actual_text)
-        #
-        # expected_text = "Admin 完成任务"
-        # assert actual_text == expected_text, f"实际内容为：{actual_text}，与预期不符"
-        # 假设driver是已经初始化好的WebDriver对象
-        # try:
-        #     # 根据class属性定位图标元素
-        #     icon_element = driver.find_element(By.CLASS_NAME, "iconfont icon-check-circle")
-        #
-        #     # 图标元素存在，可以根据需要进行进一步的断言（例如检查其样式、父元素状态等）
-        #     assert icon_element.is_displayed(), "图标元素未显示"
-        #
-        # except NoSuchElementException:
-        #     # 如果找不到图标元素，则断言失败
-        #     assert False, "预期的图标元素不存在"
+        element = self.driver.find_element(By.XPATH, "//div[@title='Admin 完成任务']")
+        actual_text = element.text
+        # 假设已经正确获取到实际文本
+        time_and_task = actual_text.split(' ')
+        if len(time_and_task) >= 3:
+            task_text = ' '.join(time_and_task[1:])
+
+            # 移除任务文本首尾及中间可能存在的多余空格
+            task_text = ' '.join(task_text.split())
+
+            # 验证实际任务文本是否包含 "Admin 完成任务"
+            assert "Admin 完成任务" == task_text
+        else:
+            assert False, f"实际文本不包含'Admin 完成任务'，实际文本为：{actual_text}"
 
         time.sleep(2)
         self.driver.quit()
@@ -124,7 +118,7 @@ class testTask(unittest.TestCase):
 
 # 打开首页
 def test_home01(self):
-    time_login(self.driver).login()
+    aiwei_login(self.driver).login()
 
 
 if __name__ == "__main__":

@@ -165,7 +165,7 @@ class Template_mixin(object):
 
     DEFAULT_TITLE = 'UI自动化测试报告'
     DEFAULT_DESCRIPTION = ''
-    DEFAULT_TESTER = 'tester1'+','+'tester2'
+    DEFAULT_TESTER = '武文帅'
 
     # ------------------------------------------------------------------------
     # HTML Template
