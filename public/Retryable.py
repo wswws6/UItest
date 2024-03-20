@@ -6,7 +6,7 @@ from selenium.common.exceptions import WebDriverException
 from time import sleep
 
 # 配置日志
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # 定义一个用于控制重试次数和间隔时间的装饰器
 import time

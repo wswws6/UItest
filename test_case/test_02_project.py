@@ -82,26 +82,14 @@ class testproject(unittest.TestCase):
 
         # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
         # print("项目详情：自动化测试项目"+ radom )
-        assert "项目详情：自动化测试项目"+ radom in element.text.strip()
-        # # 点击挂起
-        # d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
-        # d[3].click()
-        # e = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
-        # time.sleep(11111)
-        # e[22].click()
-        # 点击重启
-        # d = self.driver.find_elements(By.CSS_SELECTOR, '.margin_left_small.ivu-btn.ivu-btn-text.ivu-btn-small')
-        #
-        # d[3].click()
-        # e = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
-        # print(e)
-        # time.sleep(1)
-        # e[22].click()
-        #
-        #
-        # time.sleep(10000)
-        # 打开首页
+        assert "项目详情：自动化测试项目" + radom in element.text.strip()
 
+        # radio_button = self.driver.find_elements(By.CLASS_NAME, '.ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default')
+        #
+        # radio_button[6].click()
+        # print(1)
+        # time.sleep(1000)
+        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
