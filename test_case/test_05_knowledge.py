@@ -17,11 +17,13 @@ from selenium.webdriver.chrome.options import Options
 from public.Retryable import retry_on_failure
 
 
-
 class testKnowledge(unittest.TestCase):
     @classmethod
     @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
+        options = Options()
+        options.add_argument("--headless")  # 无头模式
+        options.add_argument("--disable-gpu")  # 禁用GPU加速，某些Linux系统可能需要
         # driver_version = "104.0.5112.10"
         # options = Options()
         # options.add_argument('--headless')  # 启动无头模式
@@ -37,7 +39,7 @@ class testKnowledge(unittest.TestCase):
             EC.presence_of_element_located((By.CSS_SELECTOR, "input[placeholder='请输入知识名称']"))
         )
         a = str(random.randint(1, 99999))
-        input_element.send_keys("自动化测试知识"+a)
+        input_element.send_keys("自动化测试知识" + a)
         # 输入标签
         element = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH,
@@ -45,7 +47,8 @@ class testKnowledge(unittest.TestCase):
         )
         element.click()
         # 选择类别
-        select_element = self.driver.find_element(By.XPATH, '//div[@class="ivu-select ivu-select-single ivu-select-default"]//span[contains(text(), "请选择类别")]')
+        select_element = self.driver.find_element(By.XPATH,
+                                                  '//div[@class="ivu-select ivu-select-single ivu-select-default"]//span[contains(text(), "请选择类别")]')
         # print(len(select_element))
         # time.sleep(1000)
         select_element.click()
@@ -82,7 +85,7 @@ class testKnowledge(unittest.TestCase):
 
         # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
         # print("知识详情：自动化测试知识"+ a )
-        assert "知识详情：自动化测试知识"+ a in element.text.strip()
+        assert "知识详情：自动化测试知识" + a in element.text.strip()
 
 
 def test_home01(self):

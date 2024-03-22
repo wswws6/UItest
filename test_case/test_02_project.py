@@ -80,15 +80,14 @@ class testproject(unittest.TestCase):
             EC.presence_of_element_located((By.CLASS_NAME, 'dpt-title'))
         )
 
-        # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
-        # print("项目详情：自动化测试项目"+ radom )
+
         assert "项目详情：自动化测试项目" + radom in element.text.strip()
 
         # radio_button = self.driver.find_elements(By.CLASS_NAME, '.ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default')
         #
         # radio_button[6].click()
         # print(1)
-        # time.sleep(1000)
+        time.sleep(1000)
         self.driver.quit()
 
 if __name__ == "__main__":

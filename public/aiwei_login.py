@@ -5,7 +5,7 @@ class aiwei_login():
         self.driver= driver
     def login(self):
         self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
-
+        self.driver.maximize_window()
         self.driver.find_element("xpath",
                                  "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
 
@@ -19,4 +19,3 @@ class aiwei_login():
                                  '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys(
             "WOrkeasy2019.")
         self.driver.find_element("xpath", "//button").click()
-        self.driver.maximize_window()

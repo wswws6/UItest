@@ -68,7 +68,7 @@ class sales_opportunity(unittest.TestCase):
         element = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, 'dpt-title'))
         )
-        print("市场活动详情：自动化测试市场活动"+ radom )
+        # print("市场活动详情：自动化测试市场活动"+ radom )
         assert "市场活动详情：自动化测试市场活动" + radom in element.text.strip()
 
         # radio_button = self.driver.find_elements(By.CLASS_NAME, '.ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default')
