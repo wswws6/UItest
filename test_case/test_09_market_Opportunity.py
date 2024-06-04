@@ -18,7 +18,7 @@ from public.Retryable import retry_on_failure
 
 
 
-class sales_opportunity(unittest.TestCase):
+class market_Opportunity(unittest.TestCase):
     @classmethod
     @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):

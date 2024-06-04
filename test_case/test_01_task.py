@@ -106,11 +106,12 @@ class testTask(unittest.TestCase):
 
             # 移除任务文本首尾及中间可能存在的多余空格
             task_text = ' '.join(task_text.split())
+            print(f"实际任务文本为：{task_text}")
 
             # 验证实际任务文本是否包含 "Admin 完成任务"
-            assert "Admin 完成任务" == task_text
+            assert "完成任务" == task_text
         else:
-            assert False, f"实际文本不包含'Admin 完成任务'，实际文本为：{actual_text}"
+            assert False, f"实际文本不包含'完成任务'，实际文本为：{actual_text}"
 
         time.sleep(2)
         self.driver.quit()

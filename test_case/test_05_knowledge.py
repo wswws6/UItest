@@ -64,7 +64,7 @@ class testKnowledge(unittest.TestCase):
         # 点击提交按钮
         e = self.driver.find_elements(By.XPATH, "//button[contains(., '确定')]")
         # time.sleep(1000)
-        e[14].click()
+        e[13].click()
         time.sleep(1)
         current_url = self.driver.current_url
         # 打印当前页面的URL

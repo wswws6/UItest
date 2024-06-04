@@ -117,20 +117,20 @@ function html_escape(s) {
 <div class='heading'>
 <h4 style="font-family: Microsoft YaHei">测试报告</h4>
 <p class='attribute'><strong>测试人员 : </strong> 武文帅</p>
-<p class='attribute'><strong>开始时间 : </strong> 2024-03-22 12:01:54</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:01:52.414882</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 8，通过 8，通过率= 100.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2024-06-04 14:44:26</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:04:01.735021</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 9，通过 6，错误 3，通过率= 66.67%</p>
 
 <p class='description'>执行情况：</p>
 </div>
 
 
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
-<a class="btn btn-warning" href='javascript:showCase(4)'>错误{ 0 }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 66.67% }</a>
+<a class="btn btn-warning" href='javascript:showCase(4)'>错误{ 3 }</a>
 <a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 8 }</a>
-<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 8 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 6 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 9 }</a>
 </p>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
 <colgroup>
@@ -173,7 +173,8 @@ function html_escape(s) {
     <div id='div_pt1_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt1_1: 新建任务的URL是: http://aiweinewpre.zizaicloud.cn/detail/task-detail/0/85616?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BB%BB%E5%8A%A176
+pt1_1: 新建任务的URL是: http://aiweinewpre.zizaicloud.cn/detail/task-detail/0/95963?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BB%BB%E5%8A%A162
+实际任务文本为：完成任务
 
 
     </pre>
@@ -188,29 +189,57 @@ pt1_1: 新建任务的URL是: http://aiweinewpre.zizaicloud.cn/detail/task-detai
 
 
 
-<tr class='passClass warning'>
+<tr class='errorClass warning'>
     <td>test_02_project.testproject</td>
     <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
     <td class="text-center">1</td>
-    <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="case_detail" id='c2'>详细</a></td>
     <td class="text-center">Assert or Error Image</td>
 </tr>
 
-<tr id='pt2_1' class='hiddenRow'>
-    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+<tr id='ft2_1' class='none'>
+    <td class='errorCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
     <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
     <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
-    <div id='div_pt2_1' class="collapse">  -->
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse">  -->
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
-    <div id='div_pt2_1' class="collapse in">
+    <button id='btn_ft2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_1'>错误</button>
+    <div id='div_ft2_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt2_1: 2024-03-22 12:02
-新建项目的URL是: http://aiweinewpre.zizaicloud.cn/detail/project-detail/2270?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE3435931
+ft2_1: 2024-06-04 14:44
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/test_case/test_02_project.py", line 48, in testsetUpClass
+    self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]').click()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"span[userid="119"]"}
+  (Session info: chrome=104.0.5112.101); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+0   chromedriver                        0x00000001028caae0 chromedriver + 3828448
+1   chromedriver                        0x000000010285ff1c chromedriver + 3391260
+2   chromedriver                        0x0000000102558fcc chromedriver + 217036
+3   chromedriver                        0x0000000102588b7c chromedriver + 412540
+4   chromedriver                        0x00000001025b1b2c chromedriver + 580396
+5   chromedriver                        0x000000010257e010 chromedriver + 368656
+6   chromedriver                        0x00000001028a039c chromedriver + 3654556
+7   chromedriver                        0x00000001028a3c4c chromedriver + 3669068
+8   chromedriver                        0x00000001028a814c chromedriver + 3686732
+9   chromedriver                        0x00000001028a4654 chromedriver + 3671636
+10  chromedriver                        0x0000000102882b40 chromedriver + 3533632
+11  chromedriver                        0x00000001028bc414 chromedriver + 3769364
+12  chromedriver                        0x00000001028bc578 chromedriver + 3769720
+13  chromedriver                        0x00000001028d10f0 chromedriver + 3854576
+14  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+15  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
 
 
     </pre>
@@ -245,29 +274,183 @@ pt2_1: 2024-03-22 12:02
     </td>
 </tr>
 
-<tr class='passClass warning'>
-    <td>test_05_knowledge.testKnowledge</td>
-    <td class="text-center">1</td>
+<tr class='errorClass warning'>
+    <td>test_04_newWBS.testproject</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
     <td class="text-center">0</td>
+    <td class="text-center">1</td>
     <td class="text-center"><a href="javascript:showClassDetail('c4',1)" class="case_detail" id='c4'>详细</a></td>
     <td class="text-center">Assert or Error Image</td>
 </tr>
 
-<tr id='pt4_1' class='hiddenRow'>
-    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+<tr id='ft4_1' class='none'>
+    <td class='errorCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
     <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
     <!--默认收起错误信息 -Findyou
-    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
-    <div id='div_pt4_1' class="collapse">  -->
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_1'>错误</button>
+    <div id='div_ft4_1' class="collapse">  -->
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
-    <div id='div_pt4_1' class="collapse in">
+    <button id='btn_ft4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_1'>错误</button>
+    <div id='div_ft4_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt4_1: 新建知识的URL是: http://aiweinewpre.zizaicloud.cn/detail/knowledge-detail/692?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9F%A5%E8%AF%8685107
-endTime:2024-03-22-12-02-40
+ft4_1: 6
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/test_case/test_04_newWBS.py", line 68, in testsetUpClass
+    input_element[5].send_keys("自动新建阶段")
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 231, in send_keys
+    self._execute(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x00000001025aaae0 chromedriver + 3828448
+1   chromedriver                        0x000000010253ff1c chromedriver + 3391260
+2   chromedriver                        0x0000000102238ea0 chromedriver + 216736
+3   chromedriver                        0x00000001022639e8 chromedriver + 391656
+4   chromedriver                        0x000000010226318c chromedriver + 389516
+5   chromedriver                        0x000000010225f308 chromedriver + 373512
+6   chromedriver                        0x0000000102291b2c chromedriver + 580396
+7   chromedriver                        0x000000010225e010 chromedriver + 368656
+8   chromedriver                        0x000000010258039c chromedriver + 3654556
+9   chromedriver                        0x0000000102583c4c chromedriver + 3669068
+10  chromedriver                        0x000000010258814c chromedriver + 3686732
+11  chromedriver                        0x0000000102584654 chromedriver + 3671636
+12  chromedriver                        0x0000000102562b40 chromedriver + 3533632
+13  chromedriver                        0x000000010259c414 chromedriver + 3769364
+14  chromedriver                        0x000000010259c578 chromedriver + 3769720
+15  chromedriver                        0x00000001025b10f0 chromedriver + 3854576
+16  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+17  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='errorClass warning'>
+    <td>test_05_knowledge.testKnowledge</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">1</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',1)" class="case_detail" id='c5'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='ft5_1' class='none'>
+    <td class='errorCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_1'>错误</button>
+    <div id='div_ft5_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_1'>错误</button>
+    <div id='div_ft5_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+ft5_1: 测试用例在重试3次后仍失败：Message: element not interactable
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104942ae0 chromedriver + 3828448
+1   chromedriver                        0x00000001048d7f1c chromedriver + 3391260
+2   chromedriver                        0x00000001045d0ea0 chromedriver + 216736
+3   chromedriver                        0x0000000104601a84 chromedriver + 416388
+4   chromedriver                        0x00000001045f791c chromedriver + 375068
+5   chromedriver                        0x00000001045f7308 chromedriver + 373512
+6   chromedriver                        0x0000000104629b2c chromedriver + 580396
+7   chromedriver                        0x00000001045f6010 chromedriver + 368656
+8   chromedriver                        0x000000010491839c chromedriver + 3654556
+9   chromedriver                        0x000000010491bc4c chromedriver + 3669068
+10  chromedriver                        0x000000010492014c chromedriver + 3686732
+11  chromedriver                        0x000000010491c654 chromedriver + 3671636
+12  chromedriver                        0x00000001048fab40 chromedriver + 3533632
+13  chromedriver                        0x0000000104934414 chromedriver + 3769364
+14  chromedriver                        0x0000000104934578 chromedriver + 3769720
+15  chromedriver                        0x00000001049490f0 chromedriver + 3854576
+16  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+17  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/public/Retryable.py", line 24, in wrapper
+    return test_func(*args, **kwargs)
+  File "/Users/wuwenshuai/Downloads/Dwise/test_case/test_05_knowledge.py", line 67, in testsetUpClass
+    e[14].click()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 94, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 395, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104942ae0 chromedriver + 3828448
+1   chromedriver                        0x00000001048d7f1c chromedriver + 3391260
+2   chromedriver                        0x00000001045d0ea0 chromedriver + 216736
+3   chromedriver                        0x0000000104601a84 chromedriver + 416388
+4   chromedriver                        0x00000001045f791c chromedriver + 375068
+5   chromedriver                        0x00000001045f7308 chromedriver + 373512
+6   chromedriver                        0x0000000104629b2c chromedriver + 580396
+7   chromedriver                        0x00000001045f6010 chromedriver + 368656
+8   chromedriver                        0x000000010491839c chromedriver + 3654556
+9   chromedriver                        0x000000010491bc4c chromedriver + 3669068
+10  chromedriver                        0x000000010492014c chromedriver + 3686732
+11  chromedriver                        0x000000010491c654 chromedriver + 3671636
+12  chromedriver                        0x00000001048fab40 chromedriver + 3533632
+13  chromedriver                        0x0000000104934414 chromedriver + 3769364
+14  chromedriver                        0x0000000104934578 chromedriver + 3769720
+15  chromedriver                        0x00000001049490f0 chromedriver + 3854576
+16  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+17  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/public/Retryable.py", line 31, in wrapper
+    pytest.fail(f"测试用例在重试{max_retries}次后仍失败：{str(e)}")
+  File "/Users/wuwenshuai/Library/Python/3.9/lib/python/site-packages/_pytest/outcomes.py", line 198, in fail
+    raise Failed(msg=reason, pytrace=pytrace)
+Failed: 测试用例在重试3次后仍失败：Message: element not interactable
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104942ae0 chromedriver + 3828448
+1   chromedriver                        0x00000001048d7f1c chromedriver + 3391260
+2   chromedriver                        0x00000001045d0ea0 chromedriver + 216736
+3   chromedriver                        0x0000000104601a84 chromedriver + 416388
+4   chromedriver                        0x00000001045f791c chromedriver + 375068
+5   chromedriver                        0x00000001045f7308 chromedriver + 373512
+6   chromedriver                        0x0000000104629b2c chromedriver + 580396
+7   chromedriver                        0x00000001045f6010 chromedriver + 368656
+8   chromedriver                        0x000000010491839c chromedriver + 3654556
+9   chromedriver                        0x000000010491bc4c chromedriver + 3669068
+10  chromedriver                        0x000000010492014c chromedriver + 3686732
+11  chromedriver                        0x000000010491c654 chromedriver + 3671636
+12  chromedriver                        0x00000001048fab40 chromedriver + 3533632
+13  chromedriver                        0x0000000104934414 chromedriver + 3769364
+14  chromedriver                        0x0000000104934578 chromedriver + 3769720
+15  chromedriver                        0x00000001049490f0 chromedriver + 3854576
+16  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+17  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
 
 
     </pre>
@@ -288,44 +471,6 @@ endTime:2024-03-22-12-02-40
     <td class="text-center">1</td>
     <td class="text-center">0</td>
     <td class="text-center">0</td>
-    <td class="text-center"><a href="javascript:showClassDetail('c5',1)" class="case_detail" id='c5'>详细</a></td>
-    <td class="text-center">Assert or Error Image</td>
-</tr>
-
-<tr id='pt5_1' class='hiddenRow'>
-    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
-    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
-    <div id='div_pt5_1' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
-    <div id='div_pt5_1' class="collapse in">
-    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
-    
-pt5_1: 18
-新建机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/sale-detail/1723?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%94%80%E5%94%AE%E6%9C%BA%E4%BC%9A7377
-销售机会详情：自动化测试销售机会7377
-
-
-    </pre>
-    </div>
-    </td>
-    <td align="right">
-        <a hidden="hidden" href="../images/">
-            <img   src="../images/" height="200px" width="400px"/>
-        </a>
-    </td>
-</tr>
-
-
-
-<tr class='passClass warning'>
-    <td>test_07_market_Insights.sales_opportunity</td>
-    <td class="text-center">1</td>
-    <td class="text-center">1</td>
-    <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c6',1)" class="case_detail" id='c6'>详细</a></td>
     <td class="text-center">Assert or Error Image</td>
 </tr>
@@ -341,8 +486,8 @@ pt5_1: 18
     <div id='div_pt6_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt6_1: 新建市场洞察的URL是: http://aiweinewpre.zizaicloud.cn/detail/markets-detail/2271?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%B4%9E%E5%AF%9F918321&amp;flag=1
-市场洞察详情：自动化测试市场洞察918321
+pt6_1: 3
+新建机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/sale-detail/1859?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%94%80%E5%94%AE%E6%9C%BA%E4%BC%9A69933
 
 
     </pre>
@@ -358,7 +503,7 @@ pt6_1: 新建市场洞察的URL是: http://aiweinewpre.zizaicloud.cn/detail/mark
 
 
 <tr class='passClass warning'>
-    <td>test_08_marketing_Activity.sales_opportunity</td>
+    <td>test_07_market_Insights.market_Insights</td>
     <td class="text-center">1</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
@@ -378,8 +523,7 @@ pt6_1: 新建市场洞察的URL是: http://aiweinewpre.zizaicloud.cn/detail/mark
     <div id='div_pt7_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt7_1: 新建市场活动的URL是: http://aiweinewpre.zizaicloud.cn/market-activities
-市场活动详情：自动化测试市场活动3880772
+pt7_1: 新建市场洞察的URL是: http://aiweinewpre.zizaicloud.cn/detail/markets-detail/2410?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%B4%9E%E5%AF%9F280107&amp;flag=1
 
 
     </pre>
@@ -395,7 +539,7 @@ pt7_1: 新建市场活动的URL是: http://aiweinewpre.zizaicloud.cn/market-acti
 
 
 <tr class='passClass warning'>
-    <td>test_09_market_Opportunity.sales_opportunity</td>
+    <td>test_08_marketing_Activity.marketing_Activity</td>
     <td class="text-center">1</td>
     <td class="text-center">1</td>
     <td class="text-center">0</td>
@@ -415,9 +559,44 @@ pt7_1: 新建市场活动的URL是: http://aiweinewpre.zizaicloud.cn/market-acti
     <div id='div_pt8_1' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
     
-pt8_1: 16
-新建市场机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/market-opportunity-detail/2273?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%9C%BA%E4%BC%9A9865139&amp;flag=3
-市场机会详情：自动化测试市场机会9865139
+pt8_1: 新建市场活动的URL是: http://aiweinewpre.zizaicloud.cn/market-activities
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_09_market_Opportunity.market_Opportunity</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c9',1)" class="case_detail" id='c9'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt9_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+    <div id='div_pt9_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+    <div id='div_pt9_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt9_1: 16
+新建市场机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/market-opportunity-detail/2412?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%9C%BA%E4%BC%9A1291571&amp;flag=3
 
 
     </pre>
@@ -434,11 +613,11 @@ pt8_1: 16
 
 <tr id='total_row' class="text-center active">
     <td>总计</td>
-    <td>8</td>
-    <td>8</td>
+    <td>9</td>
+    <td>6</td>
     <td>0</td>
-    <td>0</td>
-    <td>通过率：100.00%</td>
+    <td>3</td>
+    <td>通过率：66.67%</td>
     <td> <a href="" target="_blank"></a></td>
 </tr>
 </table>

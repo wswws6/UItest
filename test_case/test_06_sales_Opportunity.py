@@ -40,32 +40,37 @@ class sales_opportunity(unittest.TestCase):
         # 点击“新建机会”按钮
         new_opportunity_button.click()
         # 定位到机会主题输入框
-        opportunity_subject_input = self.driver.find_element(By.XPATH,
-                                                             '//div[@class=\'ivu-input-wrapper ivu-input-wrapper-default ivu-input-type-text\'][@style=\'width: 250px;\']/input[@type=\'text\']')
+        input_element = self.driver.find_element(By.CSS_SELECTOR, "input.ivu-input[type='text'][maxlength='100']")
+
         # 点击机会主题输入框
         a = str(random.randint(1, 99999))
-        opportunity_subject_input.send_keys("自动化测试销售机会"+ a )
+        input_element.send_keys("自动化测试销售机会"+ a )
         # 输入测试机会描述
-        opportunity_description_input = self.driver.find_elements(By.XPATH, "//input[@class='ivu-input ivu-input-default']")
-        opportunity_description_input[6].click()
-        opportunity_description_input[6].send_keys("这是一个测试机会描述")
+        textarea_element = self.driver.find_element(By.CSS_SELECTOR,
+                                               "textarea.ivu-input[style='height: 52px; min-height: 52px; max-height: 115px; overflow-y: hidden;']")
+        textarea_element.send_keys("这是一个测试机会描述")
+
         # 输入成交可能性
-        opportunity_probability_input = self.driver.find_element(By.XPATH,
-                                                                 '/html/body/div[38]/div[2]/div/div/div[2]/form/div[3]/div/div[1]/div[2]/input')
-        opportunity_probability_input.send_keys("95")
+        # 根据placeholder定位<input>
+        input_element = self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='整数']")
+        input_element.send_keys("95")
         # 输入预计金额
-        opportunity_amount_input = self.driver.find_element(By.CSS_SELECTOR,
-                                                                 'body > div:nth-child(44) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > form > div:nth-child(5) > div > div > div.ivu-input-number-input-wrap > input')
-        opportunity_amount_input.send_keys("10")
+        input_element = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-input-number-input")
+        print(len(input_element))
+
+        input_element[1].click()
+        input_element[1].send_keys("10")
+
         # 点击选择客户
-        customer_select = self.driver.find_element(By.CSS_SELECTOR,'body > div:nth-child(44) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > form > div:nth-child(4) > div > div > input')
+        customer_select = self.driver.find_element(By.CSS_SELECTOR,'body > div:nth-child(40) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > form > div:nth-child(4) > div > div > input')
         customer_select.click()
+        time.sleep(2)
         # 选择某个客户
         customer_select = self.driver.find_element(By.XPATH, "//tr[contains(@class, 'ivu-table-row')]//span[.//span[text()='武昌船舶重工集团有限公司']]")
         customer_select.click()
         # 点击客户选择中的确定按钮
         button = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-btn.ivu-btn-primary")
-        button[10].click()
+        button[8].click()
 
         # 选择决策部门 >
         decision_department_select = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-select-input")
@@ -74,11 +79,14 @@ class sales_opportunity(unittest.TestCase):
         purchase_department_option = self.driver.find_element(By.XPATH,
                                                                                 "//li[@class='ivu-select-item' and text()='采购部']")
         purchase_department_option.click()
+
         # 选择一级业务分类
         decision_department_select[1].click()
+
         purchase_department_option = self.driver.find_elements(By.XPATH,
                                                                                 "//li[@class='ivu-select-item' and text()='智能边缘层核心产品']")
-        purchase_department_option[1].click()
+        purchase_department_option[0].click()
+
         # 选择二级业务分类
         decision_department_select[2].click()
         purchase_department_option = self.driver.find_element(By.XPATH,
@@ -98,32 +106,37 @@ class sales_opportunity(unittest.TestCase):
         decision_department_select[5].click()
         purchase_department_option = self.driver.find_elements(By.XPATH,
                                                                                 "//*[text()='正在交货']")
-        purchase_department_option[1].click()
+        purchase_department_option[0].click()
+        # 输入机会信息
+        textarea_element = self.driver.find_elements(By.CSS_SELECTOR,
+                                                    "textarea.ivu-input[style='height: 52px; min-height: 52px; max-height: 115px; overflow-y: hidden;']")
+        textarea_element[1].send_keys("这是需求信息")
         # 选择机会负责人
         opportunity_owner = self.driver.find_elements(By.XPATH, '//input[@class="ivu-input ivu-input-default" and @readonly="readonly"]')
 
         opportunity_owner[1].click()
+
         b = self.driver.find_element(By.CSS_SELECTOR, 'span[userid="119"]')
         b.click()
         elements = self.driver.find_elements(By.XPATH, "//button[contains(., '确定')]")
-        elements[2].click()
+        elements[1].click()
 
         # 选择商务负责人
         opportunity_owner[2].click()
         b = self.driver.find_elements(By.CSS_SELECTOR, 'span[userid="119"]')
         b[1].click()
-        elements[3].click()
+        elements[2].click()
         # 选择技术负责人
         opportunity_owner[4].click()
         # time.sleep(1000)
         b = self.driver.find_elements(By.CSS_SELECTOR, 'span[userid="119"]')
         b[2].click()
         elements = self.driver.find_elements(By.XPATH, "//button[contains(., '确定')]")
-        elements[4].click()
+        elements[3].click()
         # 点击确定
         elements = self.driver.find_elements(By.CSS_SELECTOR, '.ivu-btn.ivu-btn-primary')
-        print(len(elements))
-        elements[11].click()
+        # time.sleep(1000)
+        elements[10].click()
         time.sleep(1)
         current_url = self.driver.current_url
         # 打印当前页面的URL
@@ -134,7 +147,8 @@ class sales_opportunity(unittest.TestCase):
         )
 
         # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
-        print("销售机会详情：自动化测试销售机会"+a)
+        # print("销售机会详情：自动化测试销售机会"+a)
+        # print(element.text.strip())
         assert "销售机会详情：自动化测试销售机会"+a in element.text.strip()
 
 

@@ -83,10 +83,21 @@ class testproject(unittest.TestCase):
         wait = WebDriverWait(self.driver, 10)
         label = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default")
         label[7].click()
-
         # 点击新建按钮
         button = self.driver.find_element(By.XPATH, "//button[contains(., '新建')]")
         button.click()
+        button = self.driver.find_element(By.XPATH, "//button[contains(., '导入模板')]")
+        time.sleep(1)
+        button.click()
+        # 选择模板
+        time.sleep(1)
+        element = self.driver.find_element(By.XPATH, "//li[contains(text(), '批产项目')]")
+        element.click()
+        # 点下一步
+        next_step_button = self.driver.find_element(By.XPATH, "//span[text()='下一步']")
+        next_step_button.click()
+
+
         # time.sleep(1000)
         self.driver.quit()
 
