@@ -79,16 +79,16 @@ class testproject(unittest.TestCase):
             EC.presence_of_element_located((By.CLASS_NAME, 'dpt-title'))
         )
         assert "项目详情：自动化测试项目" + radom in element.text.strip()
-        # 定位到WBStab页
-        wait = WebDriverWait(self.driver, 10)
-        label = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default")
-        label[7].click()
+        # # 定位到WBStab页
+        # wait = WebDriverWait(self.driver, 10)
+        # label = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-radio-wrapper.ivu-radio-group-item.ivu-radio-default")
+        # label[7].click()
 
-        # 点击新建按钮
-        button = self.driver.find_element(By.XPATH, "//button[contains(., '新建')]")
-        button.click()
-        # time.sleep(1000)
-        self.driver.quit()
+        # # 点击新建按钮
+        # button = self.driver.find_element(By.XPATH, "//button[contains(., '新建')]")
+        # button.click()
+        # # time.sleep(1000)
+        # self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
