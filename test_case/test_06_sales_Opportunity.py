@@ -60,10 +60,13 @@ class sales_opportunity(unittest.TestCase):
 
         input_element[1].click()
         input_element[1].send_keys("10")
-
+        # time.sleep(1000)
+        # 选择客户
+        kh = self.driver.find_elements(By.CSS_SELECTOR, ".ivu-input.ivu-input-default")
+        kh[10].click()
         # 点击选择客户
-        customer_select = self.driver.find_element(By.CSS_SELECTOR,'body > div:nth-child(40) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > form > div:nth-child(4) > div > div > input')
-        customer_select.click()
+        # customer_select = self.driver.find_element(By.CSS_SELECTOR,"body > div:nth-child(190) > div.ivu-modal-wrap > div > div > div.ivu-modal-body > form > div:nth-child(4) > div > div > input")
+        # customer_select.click()
         time.sleep(2)
         # 选择某个客户
         customer_select = self.driver.find_element(By.XPATH, "//tr[contains(@class, 'ivu-table-row')]//span[.//span[text()='武昌船舶重工集团有限公司']]")
