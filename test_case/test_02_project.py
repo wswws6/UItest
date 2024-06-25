@@ -19,7 +19,7 @@ from public.Retryable import retry_on_failure
 # 104.0.5112.101
 class testproject(unittest.TestCase):
     @classmethod
-    # @retry_on_failure(max_retries=3, delay=1)
+    @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()  # Linux/macOS示例路径
         aiwei_login(self.driver).login()
