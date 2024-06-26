@@ -19,8 +19,7 @@ class testTask(unittest.TestCase):
 
 # 打开首页
 def test_home01(self):
-    aiwei_login(self.driver).login()
 
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()
