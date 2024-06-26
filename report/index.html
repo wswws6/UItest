@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+4:Error  
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2 || level ==4) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('case_detail');
+    //console.log(detail_class.length)
+    if (level == 3) {
+        for (var i = 0; i < detail_class.length; i++){
+            detail_class[i].innerHTML="收起"
+        }
+    }
+    else{
+            for (var i = 0; i < detail_class.length; i++){
+            detail_class[i].innerHTML="详细"
+        }
+    }
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h4 style="font-family: Microsoft YaHei">测试报告</h4>
+<p class='attribute'><strong>测试人员 : </strong> 武文帅</p>
+<p class='attribute'><strong>开始时间 : </strong> 2024-06-26 18:00:06</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:03:32.801573</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 9，通过 8，错误 1，通过率= 88.89%</p>
+
+<p class='description'>执行情况：</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 88.89% }</a>
+<a class="btn btn-warning" href='javascript:showCase(4)'>错误{ 1 }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 8 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 9 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+    <td>截图</td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_01_task.testTask</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="case_detail" id='c1'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+    <div id='div_pt1_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt1_1: 新建任务的URL是: http://aiweinewpre.zizaicloud.cn/detail/task-detail/0/97260?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E4%BB%BB%E5%8A%A150
+实际任务文本为：完成任务
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_02_project.testproject</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="case_detail" id='c2'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt2_1: 2024-06-26 18:00
+2024-06-26 18:00
+2024-06-26 18:01
+2024-06-26 18:01
+新建项目的URL是: http://aiweinewpre.zizaicloud.cn/detail/project-detail/2452?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE9583721
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='errorClass warning'>
+    <td>test_03sacn.testShouye</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">1</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',1)" class="case_detail" id='c3'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='ft3_1' class='none'>
+    <td class='errorCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_1'>错误</button>
+    <div id='div_ft3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_1'>错误</button>
+    <div id='div_ft3_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+ft3_1: 测试用例在重试3次后仍失败：Message: invalid argument: invalid locator
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104506ae0 chromedriver + 3828448
+1   chromedriver                        0x000000010449bf1c chromedriver + 3391260
+2   chromedriver                        0x0000000104194fcc chromedriver + 217036
+3   chromedriver                        0x00000001041c4668 chromedriver + 411240
+4   chromedriver                        0x00000001041edb2c chromedriver + 580396
+5   chromedriver                        0x00000001041ba010 chromedriver + 368656
+6   chromedriver                        0x00000001044dc39c chromedriver + 3654556
+7   chromedriver                        0x00000001044dfc4c chromedriver + 3669068
+8   chromedriver                        0x00000001044e414c chromedriver + 3686732
+9   chromedriver                        0x00000001044e0654 chromedriver + 3671636
+10  chromedriver                        0x00000001044beb40 chromedriver + 3533632
+11  chromedriver                        0x00000001044f8414 chromedriver + 3769364
+12  chromedriver                        0x00000001044f8578 chromedriver + 3769720
+13  chromedriver                        0x000000010450d0f0 chromedriver + 3854576
+14  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+15  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/public/Retryable.py", line 24, in wrapper
+    return test_func(*args, **kwargs)
+  File "/Users/wuwenshuai/Downloads/Dwise/test_case/test_03sacn.py", line 15, in testsetUpClass
+    self.driver.find_element("xpython3 test_case/test_10_demo.pypath",'/html/body/div[1]/div/div[1]/div[1]/div/ul/li[1]/div').click()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 741, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidArgumentException: Message: invalid argument: invalid locator
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104506ae0 chromedriver + 3828448
+1   chromedriver                        0x000000010449bf1c chromedriver + 3391260
+2   chromedriver                        0x0000000104194fcc chromedriver + 217036
+3   chromedriver                        0x00000001041c4668 chromedriver + 411240
+4   chromedriver                        0x00000001041edb2c chromedriver + 580396
+5   chromedriver                        0x00000001041ba010 chromedriver + 368656
+6   chromedriver                        0x00000001044dc39c chromedriver + 3654556
+7   chromedriver                        0x00000001044dfc4c chromedriver + 3669068
+8   chromedriver                        0x00000001044e414c chromedriver + 3686732
+9   chromedriver                        0x00000001044e0654 chromedriver + 3671636
+10  chromedriver                        0x00000001044beb40 chromedriver + 3533632
+11  chromedriver                        0x00000001044f8414 chromedriver + 3769364
+12  chromedriver                        0x00000001044f8578 chromedriver + 3769720
+13  chromedriver                        0x000000010450d0f0 chromedriver + 3854576
+14  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+15  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wuwenshuai/Downloads/Dwise/public/Retryable.py", line 31, in wrapper
+    pytest.fail(f"测试用例在重试{max_retries}次后仍失败：{str(e)}")
+  File "/Users/wuwenshuai/Library/Python/3.9/lib/python/site-packages/_pytest/outcomes.py", line 198, in fail
+    raise Failed(msg=reason, pytrace=pytrace)
+Failed: 测试用例在重试3次后仍失败：Message: invalid argument: invalid locator
+  (Session info: chrome=104.0.5112.101)
+Stacktrace:
+0   chromedriver                        0x0000000104506ae0 chromedriver + 3828448
+1   chromedriver                        0x000000010449bf1c chromedriver + 3391260
+2   chromedriver                        0x0000000104194fcc chromedriver + 217036
+3   chromedriver                        0x00000001041c4668 chromedriver + 411240
+4   chromedriver                        0x00000001041edb2c chromedriver + 580396
+5   chromedriver                        0x00000001041ba010 chromedriver + 368656
+6   chromedriver                        0x00000001044dc39c chromedriver + 3654556
+7   chromedriver                        0x00000001044dfc4c chromedriver + 3669068
+8   chromedriver                        0x00000001044e414c chromedriver + 3686732
+9   chromedriver                        0x00000001044e0654 chromedriver + 3671636
+10  chromedriver                        0x00000001044beb40 chromedriver + 3533632
+11  chromedriver                        0x00000001044f8414 chromedriver + 3769364
+12  chromedriver                        0x00000001044f8578 chromedriver + 3769720
+13  chromedriver                        0x000000010450d0f0 chromedriver + 3854576
+14  libsystem_pthread.dylib             0x000000019618606c _pthread_start + 148
+15  libsystem_pthread.dylib             0x0000000196180e2c thread_start + 8
+
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_05_knowledge.testKnowledge</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',1)" class="case_detail" id='c4'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+    <div id='div_pt4_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt4_1: 新建知识的URL是: http://aiweinewpre.zizaicloud.cn/home
+endTime:2024-06-26-18-01-58
+新建知识的URL是: http://aiweinewpre.zizaicloud.cn/home
+endTime:2024-06-26-18-02-07
+新建知识的URL是: http://aiweinewpre.zizaicloud.cn/home
+endTime:2024-06-26-18-02-16
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_06_sales_Opportunity.sales_opportunity</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',1)" class="case_detail" id='c5'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt5_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+    <div id='div_pt5_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt5_1: 3
+新建机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/sale-detail/1879?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E9%94%80%E5%94%AE%E6%9C%BA%E4%BC%9A21204
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_07_market_Insights.market_Insights</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c6',1)" class="case_detail" id='c6'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt6_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+    <div id='div_pt6_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+    <div id='div_pt6_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt6_1: 新建市场洞察的URL是: http://aiweinewpre.zizaicloud.cn/detail/markets-detail/2453?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%B4%9E%E5%AF%9F7405358&amp;flag=1
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_08_marketing_Activity.marketing_Activity</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c7',1)" class="case_detail" id='c7'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt7_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+    <div id='div_pt7_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+    <div id='div_pt7_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt7_1: 新建市场活动的URL是: http://aiweinewpre.zizaicloud.cn/market-activities
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_09_market_Opportunity.market_Opportunity</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c8',1)" class="case_detail" id='c8'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt8_1' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>testsetUpClass</div></td>
+    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+    <div id='div_pt8_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+    <div id='div_pt8_1' class="collapse in">
+    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
+    
+pt8_1: 16
+新建市场机会的URL是: http://aiweinewpre.zizaicloud.cn/detail/market-opportunity-detail/2455?name=%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%82%E5%9C%BA%E6%9C%BA%E4%BC%9A4402336&amp;flag=3
+
+
+    </pre>
+    </div>
+    </td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200px" width="400px"/>
+        </a>
+    </td>
+</tr>
+
+
+
+<tr class='passClass warning'>
+    <td>test_10_demo.TestTask</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c9',1)" class="case_detail" id='c9'>详细</a></td>
+    <td class="text-center">Assert or Error Image</td>
+</tr>
+
+<tr id='pt9_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_home01</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+    <td align="right">
+        <a hidden="hidden" href="../images/">
+            <img   src="../images/" height="200" width="400"/>
+        </a>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>9</td>
+    <td>8</td>
+    <td>0</td>
+    <td>1</td>
+    <td>通过率：88.89%</td>
+    <td> <a href="" target="_blank"></a></td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>
