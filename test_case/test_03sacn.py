@@ -12,7 +12,7 @@ class testShouye(unittest.TestCase):
         aiwei_login(self.driver).login()
         self.driver.implicitly_wait(10)
         time.sleep(2)
-        self.driver.find_element("xpath",'/html/body/div[1]/div/div[1]/div[1]/div/ul/li[1]/div').click()
+        self.driver.find_element("xpython3 test_case/test_10_demo.pypath",'/html/body/div[1]/div/div[1]/div[1]/div/ul/li[1]/div').click()
         time.sleep(2)
         self.driver.find_element("xpath", '/html/body/div[1]/div/div[1]/div[1]/div/ul/li[2]/div').click()
         time.sleep(2)
