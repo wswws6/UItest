@@ -22,11 +22,10 @@ class testTask(unittest.TestCase):
     def testsetUpClass(self):
         self.driver = webdriver.Chrome()
         self.driver.get("https://www.baidu.com/")
-        # a = self.driver.find_element(By.CLASS_NAME, 'bg s_btn')
-        # print(a)
+
         page_title = self.driver.title
         print(page_title)
-        time.sleep(100)
+        time.sleep(2)
 
 
 
