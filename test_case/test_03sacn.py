@@ -1,13 +1,11 @@
-import os
+import time
 import time
 import unittest
 
 from selenium import webdriver
 
-from common.comapi import Common
-from public.aiwei_login import aiwei_login
 from public.Retryable import retry_on_failure
-
+from public.aiwei_login import aiwei_login
 
 
 class testShouye(unittest.TestCase):
