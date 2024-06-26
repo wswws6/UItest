@@ -5,7 +5,6 @@
 # from selenium import webdriver
 # from selenium.webdriver import ActionChains
 # from selenium.webdriver.common import keys
-# from common.comapi import Common
 # from public.aiwei_login import aiwei_login
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait

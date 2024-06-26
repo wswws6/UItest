@@ -4,8 +4,6 @@ import unittest
 from selenium import webdriver
 
 
-
-
 class testTask(unittest.TestCase):
     @classmethod
     # @retry_on_failure(max_retries=3, delay=1)
