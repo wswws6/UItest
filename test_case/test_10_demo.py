@@ -3,6 +3,8 @@ import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
 
 class TestTask(unittest.TestCase):
     @classmethod
@@ -16,7 +18,9 @@ class TestTask(unittest.TestCase):
         chrome_options.add_argument('--disable-dev-shm-usage')
         chromedriver_path = '/usr/bin/chromedriver'
         # 初始化 WebDriver，传入 ChromeOptions
-        cls.driver = webdriver.Chrome(executable_path= chromedriver_path, chrome_options=chrome_options)
+        service = Service(executable_path=chromedriver_path)
+
+        cls.driver = webdriver.Chrome(service=service, options=chrome_options)
         cls.driver.get("https://www.baidu.com/")
 
 
