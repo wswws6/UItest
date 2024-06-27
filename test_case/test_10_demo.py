@@ -20,10 +20,6 @@ class TestTask(unittest.TestCase):
         assert "百度一下" in page_title
         time.sleep(2)
 
-    # 打开首页的测试方法
-    def test_home01(self):
-        # 在这里添加你的测试逻辑
-        pass
 
 if __name__ == "__main__":
     unittest.main()
