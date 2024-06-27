@@ -11,6 +11,8 @@ class TestTask(unittest.TestCase):
         chrome_options = Options()
         # 添加无头模式参数
         chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+
         # 初始化 WebDriver，传入 ChromeOptions
         cls.driver = webdriver.Chrome(options=chrome_options)
         cls.driver.get("https://www.baidu.com/")
