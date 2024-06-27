@@ -14,8 +14,6 @@ from selenium.webdriver.chrome.options import Options
 
 
 
-
-
 class testTask(unittest.TestCase):
     @classmethod
     # @retry_on_failure(max_retries=3, delay=1)
