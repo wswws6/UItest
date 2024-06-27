@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from test_case.aiwei_login import aiwei_login
+# from test_case.aiwei_login import aiwei_login
 from selenium.webdriver.chrome.options import Options
 from test_case.Retryable import retry_on_failure
 from selenium.webdriver.chrome.service import Service
