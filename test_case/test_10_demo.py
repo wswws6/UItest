@@ -7,8 +7,6 @@ from selenium.webdriver.chrome.options import Options
 class TestTask(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        print("开始执行测试用例")
-        # 设置123
         # 创建 ChromeOptions 实例
         chrome_options = Options()
         # 添加无头模式参数
@@ -22,6 +20,11 @@ class TestTask(unittest.TestCase):
         assert "百度一下" in page_title
         time.sleep(2)
 
+    # 打开首页的测试方法
+    def test_home01(self):
+        # 在这里添加你的测试逻辑
+        print("打开首页测试成功")
+        pass
 
 if __name__ == "__main__":
     unittest.main()
