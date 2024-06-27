@@ -95,7 +95,7 @@ class testKnowledge(unittest.TestCase):
         )
 
         # 对元素内的文本内容进行断言（去除可能存在的换行符和空格）
-        # print("知识详情：自动化测试知识"+ a )
+        print("知识详情：自动化测试知识"+ a )
         assert "知识详情：自动化测试知识" + a in element.text.strip()
 
 
