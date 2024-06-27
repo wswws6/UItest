@@ -9,6 +9,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from public.Retryable import retry_on_failure
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+
 
 
 
@@ -16,7 +20,17 @@ class testTask(unittest.TestCase):
     @classmethod
     # @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
-        self.driver = webdriver.Chrome()
+        # 创建 ChromeOptions 实例
+        chrome_options = Options()
+        # 添加无头模式参数
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chromedriver_path = '/usr/bin/chromedriver'
+        # 初始化 WebDriver，传入 ChromeOptions
+        service = Service(executable_path=chromedriver_path)
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
         aiwei_login(self.driver).login()
         self.driver.find_element("xpath",
                                  '/html/body/div[1]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[2]/div[1]/span').click()
