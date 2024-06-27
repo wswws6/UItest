@@ -12,10 +12,13 @@ class TestTask(unittest.TestCase):
         # 添加无头模式参数
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
 
         # 初始化 WebDriver，传入 ChromeOptions
         cls.driver = webdriver.Chrome(options=chrome_options)
         cls.driver.get("https://www.baidu.com/")
+
 
         page_title = cls.driver.title
         print(page_title)
