@@ -8,7 +8,7 @@ class TestTask(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("开始执行测试用例")
-        # 设置1
+        # 设置123
         # 创建 ChromeOptions 实例
         chrome_options = Options()
         # 添加无头模式参数
