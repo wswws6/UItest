@@ -8,22 +8,40 @@ from selenium.webdriver.common.by import By
 from test_case.aiwei_login import aiwei_login
 from selenium.webdriver.chrome.options import Options
 from test_case.Retryable import retry_on_failure
-
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 class testKnowledge(unittest.TestCase):
     @classmethod
     @retry_on_failure(max_retries=3, delay=1)
     def testsetUpClass(self):
-        options = Options()
-        options.add_argument("--headless")  # 无头模式
-        options.add_argument("--disable-gpu")  # 禁用GPU加速，某些Linux系统可能需要
-        # driver_version = "104.0.5112.10"
-        # options = Options()
-        # options.add_argument('--headless')  # 启动无头模式
-        # self.driver = webdriver.Chrome(options=options)
-        self.driver = webdriver.Chrome()
+        # 创建 ChromeOptions 实例
+        chrome_options = Options()
+        # 添加无头模式参数
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chromedriver_path = '/usr/bin/chromedriver'
+        # 初始化 WebDriver，传入 ChromeOptions
+        service = Service(executable_path=chromedriver_path)
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        # aiwei_login(self.driver).login()
+        self.driver.get("http://aiweinewpre.zizaicloud.cn//login")
+        self.driver.maximize_window()
+        self.driver.find_element("xpath",
+                                 "/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input").click()
 
-        aiwei_login(self.driver).login()
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[1]/div/div/input').send_keys(
+            "admin87654321")
+        self.driver.implicitly_wait(10)
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').click()
+        self.driver.find_element("xpath",
+                                 '/html/body/div[1]/div/div/div[2]/div[2]/div/form/div[2]/div/div/input').send_keys(
+            "WOrkeasy2019.")
+        self.driver.find_element("xpath", "//button").click()
         self.driver.find_element("xpath",
                                  '//*[@id="app"]/div/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/div[1]/div/div[3]/div[2]/div[2]/span').click()
         # 输入知识名称
