@@ -1,15 +1,9 @@
-import os
 import time
 import unittest
 import random
 from selenium import webdriver
-from selenium.webdriver import ActionChains
-from public import aiwei_login
-import public.aiwei_login
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from test_case import aiwei_login
 from selenium.webdriver.common.by import By
-from public.Retryable import retry_on_failure
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 

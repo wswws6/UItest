@@ -1,5 +1,4 @@
 import time
-import time
 import unittest
 from telnetlib import EC
 
@@ -8,8 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from public.Retryable import retry_on_failure
-from public.aiwei_login import aiwei_login
+from test_case.aiwei_login import aiwei_login
 
 
 # 104.0.5112.101

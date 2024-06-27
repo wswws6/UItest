@@ -1,18 +1,12 @@
-import os
 import time
 import unittest
 import random
 from selenium import webdriver
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common import keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import datetime
-from public.aiwei_login import aiwei_login
-from public.Retryable import retry_on_failure
+from test_case.aiwei_login import aiwei_login
+from test_case.Retryable import retry_on_failure
 
 
 

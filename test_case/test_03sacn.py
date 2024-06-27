@@ -1,8 +1,8 @@
 import time
 import unittest
 from selenium import webdriver
-from public.Retryable import retry_on_failure
-from public.aiwei_login import aiwei_login
+from test_case.Retryable import retry_on_failure
+from test_case.aiwei_login import aiwei_login
 
 class testShouye(unittest.TestCase):
     @classmethod
